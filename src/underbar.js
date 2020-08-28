@@ -199,23 +199,10 @@
         noAcc = false;
       } else {
         accumulator = iterator(accumulator, elem);
-
       }
     });
 
     return accumulator;
-    //if noAcc is true
-    //accumulator = first element
-    //noAcc to false
-    //else
-    //  call iterator on accumulator
-
-    // use each to iterate through collection
-    // if noAcc is true
-    // try to continue or increment
-    // set noAcc to false
-
-
   };
 
   // Determine if the array or object contains a given value (using `===`).
@@ -233,6 +220,15 @@
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
+    iterator = iterator || _.identity;
+    return _.reduce(collection, function(elem) {
+      if (iterator(elem)) {
+        return true;
+      } else {
+        return false;
+      }
+
+    }, true);
     // TIP: Try re-using reduce() here.
   };
 
