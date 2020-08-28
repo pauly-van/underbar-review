@@ -39,12 +39,12 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-    if(n === 0){
+    if (n === 0) {
       return [];
-    }else if(n>array.length){
+    } else if (n > array.length) {
       return array;
     }
-    return n === undefined ? array[array.length-1] : array.slice(n-1);
+    return n === undefined ? array[array.length - 1] : array.slice(n - 1);
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -53,13 +53,12 @@
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
-    if(Array.isArray(collection)){
-      for(let i=0;i<collection.length;i++){
-       iterator(collection[i], i, collection);
+    if (Array.isArray(collection)) {
+      for (let i = 0; i < collection.length; i++) {
+        iterator(collection[i], i, collection);
       }
-    } 
-    else {
-      for(let key in collection){
+    } else {
+      for (let key in collection) {
         iterator(collection[key], key, collection);
       }
     }
@@ -87,13 +86,13 @@
     // create array container
     let returnArr = [];
     // use each function for collection
-    _.each(collection, function(elem){
-      if(test(elem)){
-       returnArr.push(elem); 
+    _.each(collection, function(elem) {
+      if (test(elem)) {
+        returnArr.push(elem); 
       }
-    })
-      // invoke test to each element
-      // push result into array container
+    });
+    // invoke test to each element
+    // push result into array container
     // return array container
     return returnArr;
   };
@@ -101,7 +100,7 @@
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
     // call on filter
-    return _.filter(collection, function(elem){
+    return _.filter(collection, function(elem) {
       return !test(elem);
     });
   };
@@ -137,9 +136,9 @@
   _.map = function(collection, iterator) {
     let result = [];
 
-    _.each(collection, function(elem){
-      result.push(iterator(elem))
-    })
+    _.each(collection, function(elem) {
+      result.push(iterator(elem));
+    });
 
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
@@ -188,12 +187,12 @@
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
     // if accumulator is undefined
-      // then first element of collection is accumulator
-      // create variable noAccu
+    // then first element of collection is accumulator
+    // create variable noAccu
     // use each to iterate through collection
-      // if noAcc is true
-        // try to continue or increment
-        // set noAcc to false
+    // if noAcc is true
+    // try to continue or increment
+    // set noAcc to false
       
       
   };
