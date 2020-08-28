@@ -88,7 +88,7 @@
     // use each function for collection
     _.each(collection, function(elem) {
       if (test(elem)) {
-        returnArr.push(elem); 
+        returnArr.push(elem);
       }
     });
     // invoke test to each element
@@ -126,7 +126,7 @@
       // push to key to uniqArr
       uniqArr.push(value);
     });
-    
+
     //return uniqArr
     return uniqArr;
   };
@@ -189,12 +189,33 @@
     // if accumulator is undefined
     // then first element of collection is accumulator
     // create variable noAccu
+    if (accumulator === undefined) {
+      var noAcc = true;
+    }
+
+    _.each(collection, function( elem ) {
+      if ( noAcc ) {
+        accumulator = elem;
+        noAcc = false;
+      } else {
+        accumulator = iterator(accumulator, elem);
+
+      }
+    });
+
+    return accumulator;
+    //if noAcc is true
+    //accumulator = first element
+    //noAcc to false
+    //else
+    //  call iterator on accumulator
+
     // use each to iterate through collection
     // if noAcc is true
     // try to continue or increment
     // set noAcc to false
-      
-      
+
+
   };
 
   // Determine if the array or object contains a given value (using `===`).

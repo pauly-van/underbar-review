@@ -377,7 +377,7 @@
       });
 
       it('should apply a function to every value in an array', function() {
-        var multiplyByTwo = _.map([1, 2, 3], function(element){
+        var multiplyByTwo = _.map([1, 2, 3], function(element) {
           return element * 2;
         });
 
@@ -427,7 +427,7 @@
       it('should not mutate the input array', function() {
         var input = [1, 2, 3, 4, 5];
         var result = _.reduce(input, function(memo, item) { return item; });
-        
+
         /*
          * Mutation of inputs should be avoided without good justification otherwise
          * as it can often lead to hard to find bugs and confusing code!
@@ -473,6 +473,7 @@
           // FILL_ME_IN
           // Add a line here that makes this test pass
           // for a working implementation of reduce
+          orderTraversed.push(item);
           return memo;
         }, 10);
 
