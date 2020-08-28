@@ -261,24 +261,24 @@
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
-    _.each(arguments, function(elem){
-      _.each(elem, function(value, key){
-         obj[key]=value;        
-      })
-    })
+    _.each(arguments, function(elem) {
+      _.each(elem, function(value, key) {
+        obj[key] = value;        
+      });
+    });
     return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
-    _.each(arguments, function(elem){
-      _.each(elem, function(value, key){
-        if(obj[key] === undefined) {
-          obj[key]=value;       
+    _.each(arguments, function(elem) {
+      _.each(elem, function(value, key) {
+        if (obj[key] === undefined) {
+          obj[key] = value;       
         }        
-      })
-    })
+      });
+    });
     return obj;    
   };
 
@@ -323,6 +323,18 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    // create obj container
+    let result = {};
+    //    console.log('this is parameter function: ', func, '\n', 'this is arguments func: ', );
+    
+    return function() {
+      let stringFunc = JSON.stringify(arguments);
+    
+  
+      // return a function
+      // OR return value of the functions argument
+      return result[stringFunc] = result[stringFunc] || func.apply(this, arguments);
+    };
   };
 
   // Delays a function for the given number of milliseconds, and then calls
