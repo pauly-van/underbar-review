@@ -326,11 +326,8 @@
     // create obj container
     let result = {};
     //    console.log('this is parameter function: ', func, '\n', 'this is arguments func: ', );
-    
     return function() {
       let stringFunc = JSON.stringify(arguments);
-    
-  
       // return a function
       // OR return value of the functions argument
       return result[stringFunc] = result[stringFunc] || func.apply(this, arguments);
@@ -343,7 +340,15 @@
   // The arguments for the original function are passed after the wait
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
-  _.delay = function(func, wait) {
+  _.delay = function(func, wait, a, b) {
+    //setTimeout(func, wait time) 
+    setTimeout(function() {
+      return func(a, b);
+
+    }, wait); 
+    //invoke func from delay
+    //return the result
+
   };
 
 
@@ -358,6 +363,22 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    // create an empty array container
+    let copyArray = array.slice();
+    let returnArray = [];
+    // elementCounter set to length of copy array
+    let elementCounter = array.length - 1;
+    // use Math.random to grab random of elementCounter until 0
+    while (elementCounter >= 0) {
+      let randomElement = Math.floor(Math.random() * elementCounter);
+      returnArray.push(copyArray[randomElement]);
+      copyArray.splice(randomElement, 1);
+      elementCounter--;
+    }
+    // push random index to array container
+    // decrement the element counter by 1
+    // return shuffled array
+    return returnArray;
   };
 
 
